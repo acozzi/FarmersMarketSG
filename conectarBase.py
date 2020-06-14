@@ -2,12 +2,8 @@ import pymongo
 from pymongo import MongoClient
 import datetime
 
+
 client = MongoClient('mongodb+srv://acozzi:aw96b6@farmersmarket-tu1em.gcp.mongodb.net/farmersMarket?retryWrites=true&w=majority')
-
-
-
-
-
 
 cliente = {
     "timestamp": datetime.datetime.utcnow(),
@@ -29,7 +25,8 @@ print(cliente["timestamp"])
 db = client['sg'] # <class 'pymongo.database.Database'>
 clientes = db.clientes # <class 'pymongo.collection.Collection'>
 
-post_id = clientes.insert_one()
+post_id = clientes.insert_one(cliente).inserted_id
+print(post_id)
 
 """
 cliente = {
