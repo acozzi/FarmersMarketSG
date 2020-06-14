@@ -1,4 +1,7 @@
 from tkinter import *
+from pymongo import MongoClient
+import datetime
+
 cargaC = Tk()
 cargaC.title('Cargar Nuevo Cliente')
 
@@ -75,18 +78,47 @@ def labels(cargaC):
     l_instagram.grid(row=11, column=1, sticky=W,columnspan=3)  
     e_instagram = Entry(cargaC,font=font, width=20)
     e_instagram.grid(row=12, column=1, sticky=W,rowspan=1,columnspan=3)
-def aceptarCallback():
-    pass
+
+def aceptarCallback(cargaC):
+    documento = gettingData(cargaC)
+    client = MongoClient('mongodb+srv://acozzi:aw96b6@farmersmarket-tu1em.gcp.mongodb.net/farmersMarket?retryWrites=true&w=majority')
+    db = client['sg'] # <class 'pymongo.database.Database'>
+    clientes = db.clientes # <class 'pymongo.collection.Collection'>
+    post_id = clientes.insert_one(documento).inserted_id
+    print(post_id)
+
+
+def gettingData(cargaC):
+    
+    cliente = {
+        "timestamp": datetime.datetime.utcnow(),
+        "nombre": "Romi Averbuj",
+        "direccion": {
+            "calle": "Cullen",
+            "altura": 4941,
+            "pisoDepto": "12 B",
+            "cp": 1431,
+            "localidad": "CABA",
+            "zona": 0
+        },
+        "telefono":"247815448449",
+        "mail":"acozzzi@gmail.com",
+        "facebook":"acozzzi",
+        "instagram":"acozzzi"
+    }
+    return cliente
+
 
 def cancelarCallback():
     pass
+    #ver quits
 
 def buttons(cargaC):
     line = Label(cargaC, text="-------------------------------------------------------------------------------------------------------------")
     line.grid(row=13,columnspan=3)
-    aceptar = Button(cargaC, text="Aceptar", font="Arial 14",command=aceptarCallback, pady=12) 
+    aceptar = Button(cargaC, text="Aceptar", font="Arial 14",command=aceptarCallback(cargaC), pady=12) 
     aceptar.grid(row=14, column=0, sticky=S,rowspan=1,columnspan=1)
-    cancelar = Button(cargaC, text="Cancelar", font="Arial 14",command=cancelarCallback, pady=12) 
+    cancelar = Button(cargaC, text="Cancelar", font="Arial 14",command=cargaC.quit, pady=12) 
     cancelar.grid(row=14, column=1, sticky=S,rowspan=1,columnspan=1)   
 
 
