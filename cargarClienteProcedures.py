@@ -33,20 +33,61 @@ def labels(cargaC):
     l_calle.grid(row=5, column=0, sticky=W)
     e_calle = Entry(cargaC,font=font, width=25)
     e_calle.grid(row=6, column=0,padx=15, sticky=W,rowspan=1)
-    
     l_altura = Label(cargaC, text="Altura", font=font, padx=1, pady=7, width=5, height=1,anchor=W)
     l_altura.grid(row=5, column=1, sticky=W)  
     e_altura = Entry(cargaC,font=font, width=5)
     e_altura.grid(row=6, column=1, sticky=W,rowspan=1)
-
     l_pisoDepto = Label(cargaC, text="Piso/Depto/Torre", font=font, padx=1, pady=7, width=15, height=1,anchor=W)
     l_pisoDepto.grid(row=5, column=2, sticky=W)  
     e_pisoDepto = Entry(cargaC,font=font, width=15)
     e_pisoDepto.grid(row=6, column=2, sticky=W,rowspan=1)
-    
-    
 
+    # CP Localidad Zona
+    l_localidad = Label(cargaC, text="Localidad", font=font, padx=15, pady=7, width=15, height=1,anchor=W)
+    l_localidad.grid(row=7, column=0, sticky=W)
+    e_localidad = Entry(cargaC,font=font, width=25)
+    e_localidad.grid(row=8, column=0,padx=15, sticky=W,rowspan=1)
+    l_cp = Label(cargaC, text="CP", font=font, padx=1, pady=7, width=5, height=1,anchor=W)
+    l_cp.grid(row=7, column=1, sticky=W)  
+    e_cp = Entry(cargaC,font=font, width=5)
+    e_cp.grid(row=8, column=1, sticky=W,rowspan=1)
+    l_zona = Label(cargaC, text="Zona", font=font, padx=1, pady=7, width=5, height=1,anchor=W)
+    l_zona.grid(row=7, column=2, sticky=W)  
+    e_zona = Entry(cargaC,font=font, width=5)
+    e_zona.grid(row=8, column=2, sticky=W,rowspan=1)
+
+    # Celular/fijo
+    l_celular = Label(cargaC, text="Celular", font=font, padx=15, pady=7, width=15, height=1,anchor=W)
+    l_celular.grid(row=9, column=0, sticky=W)
+    e_celular = Entry(cargaC,font=font, width=25)
+    e_celular.grid(row=10, column=0,padx=15, sticky=W,rowspan=1)
+    l_fijo = Label(cargaC, text="Fijo", font=font, padx=1, pady=7, width=8, height=1,anchor=W)
+    l_fijo.grid(row=9, column=1, sticky=W,columnspan=3)  
+    e_fijo = Entry(cargaC,font=font, width=20)
+    e_fijo.grid(row=10, column=1, sticky=W,rowspan=1,columnspan=3)
     
+    # face/insta
+    l_facebook = Label(cargaC, text="Facebook", font=font, padx=15, pady=7, width=15, height=1,anchor=W)
+    l_facebook.grid(row=11, column=0, sticky=W)
+    e_facebook = Entry(cargaC,font=font, width=25)
+    e_facebook.grid(row=12, column=0,padx=15, sticky=W,rowspan=1)
+    l_instagram = Label(cargaC, text="Instagram", font=font, padx=1, pady=7, width=8, height=1,anchor=W)
+    l_instagram.grid(row=11, column=1, sticky=W,columnspan=3)  
+    e_instagram = Entry(cargaC,font=font, width=20)
+    e_instagram.grid(row=12, column=1, sticky=W,rowspan=1,columnspan=3)
+def aceptarCallback():
+    pass
+
+def cancelarCallback():
+    pass
+
+def buttons(cargaC):
+    line = Label(cargaC, text="-------------------------------------------------------------------------------------------------------------")
+    line.grid(row=13,columnspan=3)
+    aceptar = Button(cargaC, text="Aceptar", font="Arial 14",command=aceptarCallback, pady=12) 
+    aceptar.grid(row=14, column=0, sticky=S,rowspan=1,columnspan=1)
+    cancelar = Button(cargaC, text="Cancelar", font="Arial 14",command=cancelarCallback, pady=12) 
+    cancelar.grid(row=14, column=1, sticky=S,rowspan=1,columnspan=1)   
 
 
 def locate_window(width, height, widget):
@@ -61,4 +102,5 @@ def locate_window(width, height, widget):
 
 locate_window(600,600, cargaC)
 labels(cargaC)
+buttons(cargaC)
 cargaC.mainloop()
