@@ -1,0 +1,12 @@
+Python Extension
+Create a Jupyter Notebook
+- Run "Create New Blank Jupyter Notebook" in the Command Palette (Shift + Command + P)
+- Explore our sample notebook to learn about notebook features
+Create a Python File
+- Create a new file with a .py extension
+Open a Folder or Workspace
+- Open a Folder
+- Open a Workspace
+Use the Interactive Window to develop Python Scripts
+- You can create cells on a Python file by typing "#%%" 
+- Use "Shift + Enter " to run a cell, the output will be shown in the interactive window
