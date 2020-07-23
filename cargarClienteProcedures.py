@@ -3,6 +3,8 @@ from pymongo import MongoClient
 import datetime
 from tkinter import ttk
 import files.tkObjects as tko
+import json
+
 cargaC = Tk()
 cargaC.title('Cargar Nuevo Cliente')
 
@@ -135,7 +137,11 @@ def aceptarCallback():
             "instagram": instagram.get()
         }    
     }
-    client = MongoClient('mongodb+srv://acozzi:aw96b6@farmersmarket-tu1em.gcp.mongodb.net/farmersMarket?retryWrites=true&w=majority')
+    buffer = open('files/secret.json', 'r')
+    secret = json.load(buffer)
+    buffer.close()
+
+    client = MongoClient(secret['mongoClient'])
     db = client['sg'] # <class 'pymongo.database.Database'>
     clientes = db.clientes # <class 'pymongo.collection.Collection'>
     post_id = clientes.insert_one(document).inserted_id
